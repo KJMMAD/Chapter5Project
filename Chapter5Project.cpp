@@ -1,38 +1,28 @@
 #include <iostream>
-#include <cmath>
+#include <fstream>
 using namespace std;
 
 int main()
 {
-	int pStart, pFinal,t; //t=days
-	float incRate;
-	cout << "How many organisms are in the population to start with?";
-	//pFinal = pStart(e)^rt for population growth
-	cin >> pStart;
-	if (pStart < 2) {
-		cout << "The population must be greater or equal to 2.";
-		return 0;
+//Line up should look like: front Barb, back Zev
+	ifstream listFile("LineUp.txt");
+	if (!listFile) {
+		cerr << "Error opening file!" << endl;
+		return 1;
 	}
 
-	cout << "At what rate will the population increase?";
-	cin >> incRate;
-	if (incRate <= 0) {
-		cout << "This program only calculates an increase in population, please select a number greater than 0";
-		return 0;
+	string list, first, last;
+	int studentNum = 1;
+	while (listFile >> list) {
+		first = list;
+		last = list;
+		if (list > first) {
+			first = list;
+		}
+		else if (list < last) {
+			last = list;
+		}
+		studentNum = studentNum++;
 	}
-
-	cout << "How many days will the organisms multiply?";
-	cin >> t;
-	if (t < 1) {
-		cout << "The number of days must be greater than 1.";
-		return 0;
-	}
-
-	for (int i = 1; i <= t; i++) {
-		cout << "Population for day " << i;
-		pFinal = pStart * exp(incRate * i);
-		cout << " " << pFinal << "\n";
-	}
-	float Ptest = pStart * exp(incRate * t);
-	cout << Ptest;
+	cout << "There are " << studentNum << " students in the class. " << first << " should be the first in line, and " << last << " should be in the back of the line.";
 }
