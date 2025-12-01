@@ -33,6 +33,4 @@ int main()
 		pFinal = pStart * exp(incRate * i);
 		cout << " " << pFinal << "\n";
 	}
-	float Ptest = pStart * exp(incRate * t);
-	cout << Ptest;
 }
