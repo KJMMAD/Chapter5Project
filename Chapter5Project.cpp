@@ -14,8 +14,6 @@ int main()
 	string list, first, last;
 	int studentNum = 0;
 	while (listFile >> list) {
-		first = list;
-		last = list;
 		if (list < last) {
 			last = list;
 		}
