@@ -5,22 +5,22 @@ using namespace std;
 int main()
 {
 //Line up should look like: front Barb, back Zev
-	ifstream listFile("LineUp.txt");
+	ifstream listFile("C:\\Users\\cmmsk\\Downloads\\LineUp.txt");
 	if (!listFile) {
 		cerr << "Error opening file!" << endl;
 		return 1;
 	}
 
 	string list, first, last;
-	int studentNum = 1;
+	int studentNum = 0;
 	while (listFile >> list) {
 		first = list;
 		last = list;
-		if (list > first) {
-			first = list;
-		}
-		else if (list < last) {
+		if (list < last) {
 			last = list;
+		}
+		else if (list > first) {
+			first = list;
 		}
 		studentNum = studentNum++;
 	}
