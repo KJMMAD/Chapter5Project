@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <vector>
 using namespace std;
 
 int main()
@@ -12,24 +13,26 @@ int main()
 		return 1;
 	}
 
-	string list;
-	string back = "";
-	string front = "";
+	vector<string> names;
+	string list, front, back;
 	int studentNum = 0;
 
 	while (listFile >> list) {
-		if (list > back) {
-			cout << list.compare(back) << endl;
-			back = list;
-			cout << back << "F" << endl;
-		}
-		else if (list < front) {
-			cout << list.compare(front) << endl;
-			front = list;
-			cout << front << "B" << endl;
-		}
+		names.push_back(list);
 		studentNum = studentNum++;
 	}
+	front = names[0];
+	back = names[0];
+
+	for (int i = 0; i < names.size(); i++) {
+		if (names[i] > back) {
+			back = names[i];
+		}
+		else if (names[i] < front) {
+			front = names[i];
+		}
+	}
+
 	listFile.close();
 	cout << "There are " << studentNum << " students in the class. " << front << " should be in the front of the line, and " << back << " should be in the back of the line.";
 }
