@@ -19,14 +19,14 @@ int main()
 
 	while (listFile >> list) {
 		if (list > back) {
-			cout << list.compare(front) << endl;
-			front = list;
-			cout << front << "F" << endl;
-		}
-		if (list < front) {
 			cout << list.compare(back) << endl;
 			back = list;
-			cout << back << "B" << endl;
+			cout << back << "F" << endl;
+		}
+		else if (list < front) {
+			cout << list.compare(front) << endl;
+			front = list;
+			cout << front << "B" << endl;
 		}
 		studentNum = studentNum++;
 	}
