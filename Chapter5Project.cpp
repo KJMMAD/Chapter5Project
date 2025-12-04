@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include <string>
 using namespace std;
 
 int main()
@@ -11,16 +12,24 @@ int main()
 		return 1;
 	}
 
-	string list, first, last;
+	string list;
+	string back = "";
+	string front = "";
 	int studentNum = 0;
+
 	while (listFile >> list) {
-		if (list < last) {
-			last = list;
+		if (list > back) {
+			cout << list.compare(front) << endl;
+			front = list;
+			cout << front << "F" << endl;
 		}
-		else if (list > first) {
-			first = list;
+		if (list < front) {
+			cout << list.compare(back) << endl;
+			back = list;
+			cout << back << "B" << endl;
 		}
 		studentNum = studentNum++;
 	}
-	cout << "There are " << studentNum << " students in the class. " << first << " should be the first in line, and " << last << " should be in the back of the line.";
+	listFile.close();
+	cout << "There are " << studentNum << " students in the class. " << front << " should be in the front of the line, and " << back << " should be in the back of the line.";
 }
