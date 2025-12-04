@@ -1,38 +1,31 @@
 #include <iostream>
 #include <fstream>
-#include <string>
-#include <vector>
 using namespace std;
 
 int main()
 {
-//Line up should look like: front Barb, back Zev
-	ifstream listFile("C:\\Users\\cmmsk\\Downloads\\LineUp.txt");
+	//There should be a bar chart of at least 2 asterisks and a bar chart of at most 18 asterisks
+	ifstream listFile("C:\\Users\\cmmsk\\Downloads\\People.txt");
+
 	if (!listFile) {
 		cerr << "Error opening file!" << endl;
 		return 1;
 	}
 
-	vector<string> names;
-	string list, front, back;
-	int studentNum = 0;
+	int list, num;
+	int year = 1900;
 
 	while (listFile >> list) {
-		names.push_back(list);
-		studentNum = studentNum++;
+		string bar;
+		num = list/1000;
+		for (int i = 0; i < num; i++) {
+			bar += "*";
+		}
+		cout << year << " " << list << bar << endl;
+		year += 20;
 	}
-	front = names[0];
-	back = names[0];
 
-	for (int i = 0; i < names.size(); i++) {
-		if (names[i] > back) {
-			back = names[i];
-		}
-		else if (names[i] < front) {
-			front = names[i];
-		}
-	}
 
 	listFile.close();
-	cout << "There are " << studentNum << " students in the class. " << front << " should be in the front of the line, and " << back << " should be in the back of the line.";
+	cout << ".";
 }
