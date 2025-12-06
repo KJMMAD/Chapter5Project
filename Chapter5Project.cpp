@@ -1,26 +1,31 @@
 #include <iostream>
+#include <random>
 using namespace std;
 
 int main()
 {
-	int max;
-	string patternA;
-	cout << "Please enter a number greater than 1.";
-	cin >> max;
+	int min = 0;
+	int max = 100;
+	
+	random_device generator;
+	uniform_int_distribution<int>rVal(min, max);
 
-	cout << "Pattern A" << endl;
+	cout << "Generating random number";
+	int rNum = rVal(generator);
+	int attempts, answer;
+	cout << "Guess the number" << endl;
+	cin >> answer;
+	while (answer != rNum) {
 
-	for (int i = 0; i < max; i++) {
-		patternA += '+';
-		cout << patternA << endl;
-	}
-	cout << "Pattern B" << endl;
-
-	for (int i = max; i > 0; i--) {
-		string patternB;
-		for (int b = 0; b < i; b++) {
-			patternB += '+';
+		if (answer > rNum) {
+			cout << "Your guess is higher than the number." << endl;
 		}
-		cout << patternB << endl;
+		else if (answer < rNum) {
+			cout << "You guess is lower than the number." << endl;
+		}
+		cout << "Guess again" << endl;
+		cin >> answer;
 	}
+	cout << "You guessed the number! It was " << rNum << endl;
+	return 0;
 }
