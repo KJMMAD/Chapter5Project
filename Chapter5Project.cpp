@@ -10,7 +10,7 @@ int main()
 	random_device generator;
 	uniform_int_distribution<int>rVal(min, max);
 
-	cout << "Generating random number";
+	cout << "Generating random number" << endl;
 	int rNum = rVal(generator);
 	int attempts, answer;
 	cout << "Guess the number" << endl;
