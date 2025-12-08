@@ -12,11 +12,13 @@ int main()
 
 	cout << "Generating random number" << endl;
 	int rNum = rVal(generator);
-	int attempts, answer;
+	int answer;
+
 	cout << "Guess the number" << endl;
 	cin >> answer;
-	while (answer != rNum) {
+	int attempt = 1;
 
+	while (answer != rNum) {
 		if (answer > rNum) {
 			cout << "Your guess is higher than the number." << endl;
 		}
@@ -25,7 +27,9 @@ int main()
 		}
 		cout << "Guess again" << endl;
 		cin >> answer;
+		attempt = attempt + 1;
 	}
-	cout << "You guessed the number! It was " << rNum << endl;
+
+	cout << "You guessed the number in " << attempt << " attempts! The number was " << rNum << endl;
 	return 0;
 }
